@@ -33,6 +33,8 @@ class MovieTableViewController: UITableViewController {
             movieContainer.append(Movie(from: rawMovie))
         }
         movieData = movieContainer
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +66,13 @@ class MovieTableViewController: UITableViewController {
         guard let genre = Genre.init(rawValue: indexPath.section),
             let data = byGenre(genre) else {
             return cell
+        }
+        
+        if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+            movieCell.movieTitleLabel.text = data[indexPath.row].title
+            movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+            movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+            return movieCell
         }
         
         // update to use a custom cell subclass

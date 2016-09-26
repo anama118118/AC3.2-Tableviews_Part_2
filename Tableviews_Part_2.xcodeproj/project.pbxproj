@@ -22,6 +22,7 @@
 		140665661D98C1B100363EE8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665621D98C1B100363EE8 /* Roboto-Light.ttf */; };
 		140665671D98C1B100363EE8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665631D98C1B100363EE8 /* Roboto-Regular.ttf */; };
 		140665691D98C1BB00363EE8 /* ReelGoodColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140665681D98C1BB00363EE8 /* ReelGoodColors.swift */; };
+		A75744571D99B90D005E50F4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75744561D99B90D005E50F4 /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		140665681D98C1BB00363EE8 /* ReelGoodColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelGoodColors.swift; path = Tableviews_Part_2/ReelGoodColors.swift; sourceTree = SOURCE_ROOT; };
 		142842C91D920F3C007A1182 /* Tableviews_Part_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tableviews_Part_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		142842DD1D920F3C007A1182 /* Tableviews_Part_2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tableviews_Part_2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75744561D99B90D005E50F4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieTableViewCell.swift; path = Tableviews_Part_2/Views/MovieTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		140665251D98AB0100363EE8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A75744561D99B90D005E50F4 /* MovieTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				1406650F1D987A7A00363EE8 /* AppDelegate.swift in Sources */,
 				140665181D987A9600363EE8 /* MovieTableViewController.swift in Sources */,
 				140665151D987A8D00363EE8 /* Data.swift in Sources */,
+				A75744571D99B90D005E50F4 /* MovieTableViewCell.swift in Sources */,
 				140665161D987A8D00363EE8 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
