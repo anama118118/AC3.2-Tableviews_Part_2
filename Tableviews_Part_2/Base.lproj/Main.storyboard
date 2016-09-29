@@ -4,8 +4,20 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Movie Table View Controller-->
         <scene sceneID="cyG-Yu-0vp">
@@ -15,9 +27,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hov-bR-tj0">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="200" id="NQa-gd-usH" customClass="MovieTableViewCell" customModule="Tableviews_Part_2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="200"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell1" rowHeight="200" id="NQa-gd-usH" userLabel="MovieTableViewCell1" customClass="MovieTableViewCell" customModule="Tableviews_Part_2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NQa-gd-usH" id="I3u-H0-aWI">
                                     <frame key="frameInset" width="375" height="199"/>
@@ -45,6 +61,7 @@
                                         <constraint firstItem="ZpM-2k-1EB" firstAttribute="leading" secondItem="Qbd-Cv-eTp" secondAttribute="trailing" constant="8" id="DO4-MU-oJX"/>
                                         <constraint firstItem="fM0-bN-1vq" firstAttribute="leading" secondItem="Qbd-Cv-eTp" secondAttribute="trailing" constant="8" id="JSq-qy-BL5"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="fM0-bN-1vq" secondAttribute="trailing" constant="8" id="KGS-Gy-CTu"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Qbd-Cv-eTp" secondAttribute="bottom" constant="8" id="REx-Eu-F23"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="ZpM-2k-1EB" secondAttribute="bottom" constant="8" id="UgF-cK-dKP"/>
                                         <constraint firstItem="fM0-bN-1vq" firstAttribute="top" secondItem="I3u-H0-aWI" secondAttribute="topMargin" constant="8" id="VxH-Xp-jbV"/>
                                         <constraint firstItem="Qbd-Cv-eTp" firstAttribute="top" secondItem="I3u-H0-aWI" secondAttribute="top" constant="8" id="bRX-U3-1Qu"/>
@@ -52,13 +69,114 @@
                                         <constraint firstItem="Qbd-Cv-eTp" firstAttribute="leading" secondItem="I3u-H0-aWI" secondAttribute="leading" constant="8" id="i6c-LP-dZr"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Qbd-Cv-eTp" secondAttribute="bottom" constant="12" id="9Ds-a6-UNu"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="moviePosterImageView" destination="Qbd-Cv-eTp" id="JCH-3b-xXa"/>
                                     <outlet property="movieSummaryLabel" destination="ZpM-2k-1EB" id="jy0-1n-dxu"/>
                                     <outlet property="movieTitleLabel" destination="fM0-bN-1vq" id="5of-lh-Kkf"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell2" rowHeight="200" id="vrs-ck-rZe" userLabel="MovieTableViewCell2" customClass="MovieTableViewCell" customModule="Tableviews_Part_2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="336" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vrs-ck-rZe" id="NcD-Nb-tap">
+                                    <frame key="frameInset" width="375" height="199"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hp-Gp-fVe">
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Year" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5m-Zn-TqZ">
+                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpM-tQ-u3L">
+                                            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="359" id="fSS-gb-8x5"/>
+                                                <constraint firstAttribute="height" constant="12" id="hLL-7w-QSo"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1p-fM-Jz0">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="KQI-4d-KcW"/>
+                                                <constraint firstAttribute="height" constant="118" id="b4B-f7-6EV"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Summary Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lql-MK-ZRg">
+                                            <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
+                                            <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lql-MK-ZRg" firstAttribute="top" secondItem="BpM-tQ-u3L" secondAttribute="bottom" constant="8" symbolic="YES" id="Avo-vj-chX"/>
+                                        <constraint firstItem="P1p-fM-Jz0" firstAttribute="leading" secondItem="NcD-Nb-tap" secondAttribute="leadingMargin" constant="8" id="F4x-Cr-Z0I"/>
+                                        <constraint firstAttribute="trailing" secondItem="Z5m-Zn-TqZ" secondAttribute="trailing" constant="8" id="Fee-JK-fxw"/>
+                                        <constraint firstAttribute="trailing" secondItem="BpM-tQ-u3L" secondAttribute="trailing" constant="8" id="OeJ-b3-pKD"/>
+                                        <constraint firstItem="lql-MK-ZRg" firstAttribute="leading" secondItem="P1p-fM-Jz0" secondAttribute="trailing" constant="8" symbolic="YES" id="Qd7-Az-l1U"/>
+                                        <constraint firstItem="P1p-fM-Jz0" firstAttribute="top" secondItem="BpM-tQ-u3L" secondAttribute="bottom" constant="8" id="R7v-uT-Ifi"/>
+                                        <constraint firstItem="6Hp-Gp-fVe" firstAttribute="leading" secondItem="NcD-Nb-tap" secondAttribute="leadingMargin" constant="8" id="XLR-5t-EpN"/>
+                                        <constraint firstItem="lql-MK-ZRg" firstAttribute="top" secondItem="BpM-tQ-u3L" secondAttribute="bottom" constant="8" id="aU8-KG-PKo"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="lql-MK-ZRg" secondAttribute="trailing" constant="8" id="akS-bg-hDK"/>
+                                        <constraint firstItem="Z5m-Zn-TqZ" firstAttribute="top" secondItem="NcD-Nb-tap" secondAttribute="topMargin" constant="8" id="cFI-nL-nh2"/>
+                                        <constraint firstItem="BpM-tQ-u3L" firstAttribute="leading" secondItem="NcD-Nb-tap" secondAttribute="leading" constant="8" id="hUC-Df-iZw"/>
+                                        <constraint firstItem="6Hp-Gp-fVe" firstAttribute="top" secondItem="NcD-Nb-tap" secondAttribute="topMargin" constant="8" id="ho4-Jd-c6N"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="P1p-fM-Jz0" secondAttribute="bottom" constant="8" id="j7W-za-aTh"/>
+                                        <constraint firstItem="BpM-tQ-u3L" firstAttribute="top" secondItem="Z5m-Zn-TqZ" secondAttribute="bottom" constant="8" id="pRR-l9-8E5"/>
+                                        <constraint firstItem="lql-MK-ZRg" firstAttribute="bottom" secondItem="P1p-fM-Jz0" secondAttribute="bottom" id="pdo-5s-HYW"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="moviePosterImageView" destination="P1p-fM-Jz0" id="GHB-gz-iGK"/>
+                                    <outlet property="movieSummaryLabel" destination="lql-MK-ZRg" id="56X-t3-uos"/>
+                                    <outlet property="movieTitleLabel" destination="6Hp-Gp-fVe" id="lxz-gZ-jr3"/>
+                                    <outlet property="movieYearLabel" destination="Z5m-Zn-TqZ" id="fSr-Nl-0Ot"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell3" rowHeight="200" id="ayc-eb-bB1" userLabel="MovieTableViewCell3" customClass="MovieTableViewCell" customModule="Tableviews_Part_2" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="536" width="375" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayc-eb-bB1" id="nM7-4K-wqb">
+                                    <frame key="frameInset" width="375" height="199"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PYT-FL-ess">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="4YM-6E-JRs"/>
+                                                <constraint firstAttribute="height" constant="180" id="nVt-Ju-0qd"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBA-nW-pG5">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Movie Summary Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDh-DC-L1c">
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hBA-nW-pG5" secondAttribute="trailing" constant="8" id="529-yy-bbV"/>
+                                        <constraint firstItem="PYT-FL-ess" firstAttribute="top" secondItem="nM7-4K-wqb" secondAttribute="top" constant="8" id="BcY-Ze-guP"/>
+                                        <constraint firstItem="hBA-nW-pG5" firstAttribute="top" secondItem="nM7-4K-wqb" secondAttribute="topMargin" constant="8" id="HDs-Vc-PgL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="CDh-DC-L1c" secondAttribute="bottom" constant="8" id="TN9-uR-PPz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CDh-DC-L1c" secondAttribute="trailing" constant="8" id="d0r-dO-TV1"/>
+                                        <constraint firstItem="CDh-DC-L1c" firstAttribute="leading" secondItem="PYT-FL-ess" secondAttribute="trailing" constant="8" id="lh6-Yg-fOV"/>
+                                        <constraint firstItem="hBA-nW-pG5" firstAttribute="leading" secondItem="PYT-FL-ess" secondAttribute="trailing" constant="8" id="nI1-zI-KK5"/>
+                                        <constraint firstItem="CDh-DC-L1c" firstAttribute="top" secondItem="hBA-nW-pG5" secondAttribute="bottom" constant="8" id="ogj-8d-vuv"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="PYT-FL-ess" secondAttribute="bottom" constant="8" id="t5V-rK-u0S"/>
+                                        <constraint firstItem="PYT-FL-ess" firstAttribute="leading" secondItem="nM7-4K-wqb" secondAttribute="leading" constant="8" id="tws-qD-L4t"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="moviePosterImageView" destination="PYT-FL-ess" id="AYX-QJ-ZIx"/>
+                                    <outlet property="movieSummaryLabel" destination="CDh-DC-L1c" id="LmV-fk-aZt"/>
+                                    <outlet property="movieTitleLabel" destination="hBA-nW-pG5" id="VMj-GF-zEc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,7 +185,31 @@
                             <outlet property="delegate" destination="yet-gM-qc3" id="XBu-Bk-Pre"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gWo-Yo-CxC"/>
+                    <navigationItem key="navigationItem" id="gWo-Yo-CxC">
+                        <barButtonItem key="leftBarButtonItem" image="reel" id="HI8-Pg-Q2I">
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="barButton:" destination="yet-gM-qc3" id="tTm-WH-AlZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="3" id="0c7-Fb-hFu">
+                                <connections>
+                                    <action selector="layoutThreeItemTapped:" destination="yet-gM-qc3" id="DVA-Tj-AGc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="2" id="VcB-ix-V4b">
+                                <connections>
+                                    <action selector="layoutTwoItemTapped:" destination="yet-gM-qc3" id="z6A-m1-TS8"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="1" id="eAy-g0-OWl">
+                                <connections>
+                                    <action selector="layoutOneItemTapped:" destination="yet-gM-qc3" id="Ec3-bt-8Cy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RHw-bd-Gmq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,4 +234,7 @@
             <point key="canvasLocation" x="-194.40000000000001" y="64.31784107946028"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reel" width="30" height="30"/>
+    </resources>
 </document>

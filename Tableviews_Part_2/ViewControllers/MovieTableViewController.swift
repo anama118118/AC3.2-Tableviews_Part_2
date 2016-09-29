@@ -8,6 +8,30 @@
 import UIKit
 
 class MovieTableViewController: UITableViewController {
+    
+    enum CellStyle {
+        case blackAndWhite
+        case singleGreenBar
+        case greenBackground
+    }
+    
+    var selectedCellStyle = CellStyle.blackAndWhite
+    
+    @IBAction func layoutOneItemTapped(_ sender: UIBarButtonItem) {
+        selectedCellStyle = CellStyle.blackAndWhite
+        self.tableView.reloadData()
+    }
+    @IBAction func layoutTwoItemTapped(_ sender: UIBarButtonItem) {
+        selectedCellStyle = CellStyle.singleGreenBar
+        self.tableView.reloadData()
+    }
+    @IBAction func layoutThreeItemTapped(_ sender: UIBarButtonItem) {
+        selectedCellStyle = CellStyle.greenBackground
+        self.tableView.reloadData()
+    }
+    @IBAction func barButton(_ sender: UIBarButtonItem) {
+    }
+    
     enum Century: Int { case twentieth, twentyFirst }
     enum Genre: Int {
         case animation
@@ -18,7 +42,9 @@ class MovieTableViewController: UITableViewController {
     internal var movieData: [Movie]?
 
     internal let rawMovieData: [[String : Any]] = movies
-    let cellIdentifier: String = "MovieTableViewCell"
+    let cellIdentifier1: String = "MovieTableViewCell1"
+    let cellIdentifier2: String = "MovieTableViewCell2"
+    let cellIdentifier3: String = "MovieTableViewCell3"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +63,23 @@ class MovieTableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 200.0
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) { //called immidiately after the view did load
         super.viewWillAppear(animated)
         
+        //self.navigationController
         // 1. update our nav controller's tints and font
+        if let navigationController: UINavigationController = self.navigationController{
+            navigationController.navigationBar.tintColor = UIColor.white
+            navigationController.navigationBar.barTintColor = UIColor.reelGoodGreen
+            navigationController.navigationBar.titleTextAttributes = [
+                NSForegroundColorAttributeName : UIColor.white,
+                NSFontAttributeName : UIFont.systemFont(ofSize: 24.0)
+            ]
+        }
         
         // 2. add a new bar button
-        
+//        let menubarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"reel"), style: .plain, target: nil, action: nil)
+//            self.navigationItem.setLeftBarButton(menubarButton, animated: false)
     }
 
     // MARK: - Table view data source
@@ -61,17 +97,47 @@ class MovieTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let anotherIdentifier: String
+//        if self.selectedCellStyle == .blackAndWhite {
+//            anotherIdentifier = cellIdentifier1
+//        } else if self.selectedCellStyle == .singleGreenBar{
+//            anotherIdentifier = cellIdentifier2
+//        } else {
+//            anotherIdentifier = cellIdentifier3
+//        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        switch(self.selectedCellStyle) {
+        case .blackAndWhite: anotherIdentifier = cellIdentifier1
+        case .singleGreenBar: anotherIdentifier = cellIdentifier2
+        case .greenBackground: anotherIdentifier = cellIdentifier3
+        }
+        
+        
+//        let identifier: String
+//        if (indexPath.section  % 2 == 0) {
+//            identifier = cellIdentifier1
+//        } else {
+//            identifier = cellIdentifier2
+//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: anotherIdentifier, for: indexPath)
         guard let genre = Genre.init(rawValue: indexPath.section),
             let data = byGenre(genre) else {
             return cell
         }
         
         if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+            if self.selectedCellStyle == .singleGreenBar {
+                 movieCell.movieYearLabel.text = String(data[indexPath.row].year)
+            }
+//            if (indexPath.section  % 2 == 1) {
+//                movieCell.movieYearLabel.text = String(data[indexPath.row].year) //let cellIdentifier: String = "MovieTableViewCell1"uncomment when 2
+//            }
             movieCell.movieTitleLabel.text = data[indexPath.row].title
             movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+            
             movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+            
+            
             return movieCell
         }
         
